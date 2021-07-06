@@ -28,7 +28,6 @@ list_of_locations = get_place_info(business_name)
 
 # Write list of locations to a new .csv file
 with open('location_file.csv', mode = 'w', newline = '') as location_file:
-    location_writer = csv.writer(location_file, delimiter=',', quotechar = '"', quoting=csv.QUOTE_MINIMAL)
     writer = csv.writer(location_file)
     header = ['Business Name', 'Street Address', 'Latitude', 'Longitude']
     writer.writerow(header)
