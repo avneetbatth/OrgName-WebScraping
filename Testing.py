@@ -1,20 +1,19 @@
 import os
+import csv
 from pprint import pprint
 import googlemaps
 
-API_KEY = ''
+API_KEY = 'AIzaSyB2xUSxK2z-YTf2z_JyKwXZoDxWTaHIEtY'
 
 # Create a google maps client instance
 map_client = googlemaps.Client(API_KEY)
 
-#print(dir(map_client))
-
-# def get_place_info()
 business_name = 'Super Duper Burgers San Francisco'
 response = map_client.places(business_name)
 #pprint(response['results'][0])
 
-# For each location, get list of Business Name, Street Address, Latitude, Longitude. Return a list of that for each location. List of lists. 
+
+# For each location, get array of Business Name, Street Address, Latitude, Longitude
 def get_place_info(business_name):
     total_info = []
     for i in map_client.places(business_name)['results']:
@@ -28,15 +27,10 @@ def get_place_info(business_name):
 
 list_of_locations = get_place_info(business_name)
 
-with open('location_file.csv', mode = 'w') as location_file:
-    location_writer = csv.writer(location_file, delimiter=',', quotechar = '"', quoting=csv.QUOTE_MINIMAL)
-
-    for i in list_of_locations:
-        location_writer.writerow(i)
-        #address_info = []
-
-# Take in the Excel file as a CSV? Put all the names of the locations into an array
-
-# Interact with Google Maps API to get the addresses of the business given its name
-
-# Put addresses into another object? Use dict? Key is the business name. Value is a list of addresses for it. 
+# Write list of locations to a new .csv file
+with open('location_file.csv', mode = 'w', newline = '') as location_file:
+    #location_writer = csv.writer(location_file, delimiter=',', quotechar = '"', quoting=csv.QUOTE_MINIMAL)
+    writer = csv.writer(location_file)
+    header = ['Business Name', 'Street Address', 'Latitude', 'Longitude']
+    writer.writerow(header)
+    writer.writerows(list_of_locations)
