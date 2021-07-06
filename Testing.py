@@ -7,8 +7,16 @@ API_KEY = open('API_KEY.txt').read()
 # Create a google maps client instance
 map_client = googlemaps.Client(API_KEY)
 
-business_names = ['Super Duper Burgers San Francisco', 'Roy Rogers New Jersey']
-#response = map_client.places(business_name)
+# Declare the list of queries whose address and lat-long coordinates will be searched for
+business_names = []
+
+with open('input_data.csv', encoding = 'utf8') as file_in:
+    csv_reader = csv.reader(file_in)
+    # Use this to skip the header
+    next(csv_reader)
+    for line in csv_reader:
+        business_names.append(line)
+
 
 # Given a location of a business name, get array of Business Name, Street Address, Latitude, Longitude
 def get_place_info(business_names):
