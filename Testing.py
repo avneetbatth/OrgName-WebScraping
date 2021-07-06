@@ -16,7 +16,8 @@ response = map_client.places(location_name)
 
 for i in response['results']:
     print(i['formatted_address'])
-
+    print(i['geometry']['location'])
+    print('\n')
 
 #pprint('Address: ' + response['results'][0]['formatted_address'])
 #pprint(response['results'][0]['geometry']['location'])
