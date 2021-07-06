@@ -1,16 +1,15 @@
-import os
 import csv
 from pprint import pprint
 import googlemaps
 
-API_KEY = ''
+API_KEY = open('API_KEY.txt').read()
 
 # Create a google maps client instance
 map_client = googlemaps.Client(API_KEY)
 
 business_name = 'Super Duper Burgers San Francisco'
 response = map_client.places(business_name)
-#pprint(response['results'][0])
+
 
 
 # For each location, get array of Business Name, Street Address, Latitude, Longitude
@@ -29,7 +28,7 @@ list_of_locations = get_place_info(business_name)
 
 # Write list of locations to a new .csv file
 with open('location_file.csv', mode = 'w', newline = '') as location_file:
-    #location_writer = csv.writer(location_file, delimiter=',', quotechar = '"', quoting=csv.QUOTE_MINIMAL)
+    location_writer = csv.writer(location_file, delimiter=',', quotechar = '"', quoting=csv.QUOTE_MINIMAL)
     writer = csv.writer(location_file)
     header = ['Business Name', 'Street Address', 'Latitude', 'Longitude']
     writer.writerow(header)
