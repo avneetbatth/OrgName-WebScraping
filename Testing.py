@@ -14,7 +14,7 @@ business_name = 'Super Duper Burgers San Francisco'
 response = map_client.places(business_name)
 #pprint(response['results'][0])
 
-# For each location, get array of Business Name, Street Address, Latitude, Longitude
+# For each location, get list of Business Name, Street Address, Latitude, Longitude. Return a list of that for each location. List of lists. 
 def get_place_info(business_name):
     total_info = []
     for i in map_client.places(business_name)['results']:
@@ -24,8 +24,7 @@ def get_place_info(business_name):
         address_info.append(i['geometry']['location']['lat'])
         address_info.append(i['geometry']['location']['lng'])
         total_info.append(address_info)
-        #print(address_info)
-    #pprint(total_info)
+    return(total_info)
 
 list_of_locations = get_place_info(business_name)
 
