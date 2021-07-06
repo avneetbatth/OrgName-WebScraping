@@ -10,8 +10,8 @@ map_client = googlemaps.Client(API_KEY)
 #print(dir(map_client))
 
 # def get_place_info()
-location_name = 'Super Duper Burgers San Francisco'
-response = map_client.places(location_name)
+business_name = 'Super Duper Burgers San Francisco'
+response = map_client.places(business_name)
 #pprint(response['results'][0])
 
 for i in response['results']:
