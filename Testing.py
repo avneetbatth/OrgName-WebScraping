@@ -14,21 +14,17 @@ business_name = 'Super Duper Burgers San Francisco'
 response = map_client.places(business_name)
 #pprint(response['results'][0])
 
-for i in response['results']:
-    print(i['formatted_address'])
-    print(i['geometry']['location'])
-    print('\n')
+# For each location, get array of Business Name, Street Address, Latitude, Longitude
+def get_place_info(business_name):
+    for i in map_client.places(business_name)['results']:
+        address_info = []
+        address_info.append(i['name'])
+        address_info.append(i['formatted_address'])
+        address_info.append(i['geometry']['location']['lat'])
+        address_info.append(i['geometry']['location']['lng'])
+        #print(address_info)
 
-#pprint('Address: ' + response['results'][0]['formatted_address'])
-#pprint(response['results'][0]['geometry']['location'])
 
-#work_place_address = '1 Market Street, San Francisco, CA'
-#organization_name = 'East Orange VA'
-#map_client.
-#response = map_client.geocode(work_place_address)
-#pprint(response)
-
-#pprint(response[0]['formatted_address'])
 # Take in the Excel file as a CSV? Put all the names of the locations into an array
 
 # Interact with Google Maps API to get the addresses of the business given its name
