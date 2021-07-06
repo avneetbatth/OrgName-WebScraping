@@ -14,7 +14,6 @@ business_name = 'Super Duper Burgers San Francisco'
 response = map_client.places(business_name)
 #pprint(response['results'][0])
 
-
 # For each location, get array of Business Name, Street Address, Latitude, Longitude
 def get_place_info(business_name):
     total_info = []
@@ -28,11 +27,12 @@ def get_place_info(business_name):
         #print(address_info)
     #pprint(total_info)
 
+list_of_locations = get_place_info(business_name)
 
 with open('location_file.csv', mode = 'w') as location_file:
     location_writer = csv.writer(location_file, delimiter=',', quotechar = '"', quoting=csv.QUOTE_MINIMAL)
 
-    for i in get_place_info(business_name):
+    for i in list_of_locations:
         location_writer.writerow(i)
         #address_info = []
 
