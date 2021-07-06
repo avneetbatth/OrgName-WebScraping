@@ -10,11 +10,16 @@ map_client = googlemaps.Client(API_KEY)
 #print(dir(map_client))
 
 # def get_place_info()
-location_name = 'Fernsehturm Berlin'
-response = map_client.places(query=location_name)
-#pprint(response)
-pprint('Address: ' + response['results'][0]['formatted_address'])
-pprint(response['results'][0]['geometry']['location'])
+location_name = 'Super Duper Burgers San Francisco'
+response = map_client.places(location_name)
+#pprint(response['results'][0])
+
+for i in response['results']:
+    print(i['formatted_address'])
+
+
+#pprint('Address: ' + response['results'][0]['formatted_address'])
+#pprint(response['results'][0]['geometry']['location'])
 
 #work_place_address = '1 Market Street, San Francisco, CA'
 #organization_name = 'East Orange VA'
