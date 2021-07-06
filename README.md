@@ -6,3 +6,5 @@ The organizations will be varied in type. Some will be large multi-nationals, ot
 If an organization has an excessive amount of locations, say over 100, I would like to only consider 2 locations per state, for example, in a manner that a certain radius around those locations reaches the largest number of people. Additionally, I want to only consider locations that contain certain criteria. For example, given Company A, if they have 100 locations in New York, I would like to select their two locations with the largest number of amenities as the first condition.
 
 I plan on using Python as the main language for this project. The end goal for this project is to have a robust web scraping algorithm that is able to pull the addresses of varied organization types. 
+
+Stage 1: Read in query names from a CSV. Take those queries and output the Business Name, Street Address, Latitude, and Longitude into another CSV.
