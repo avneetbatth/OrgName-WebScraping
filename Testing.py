@@ -3,7 +3,7 @@ import csv
 from pprint import pprint
 import googlemaps
 
-API_KEY = 'AIzaSyB2xUSxK2z-YTf2z_JyKwXZoDxWTaHIEtY'
+API_KEY = ''
 
 # Create a google maps client instance
 map_client = googlemaps.Client(API_KEY)
