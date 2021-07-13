@@ -8,3 +8,4 @@ If an organization has an excessive amount of locations, say over 100, I would l
 I plan on using Python as the main language for this project. The end goal for this project is to have a robust web scraping algorithm that is able to pull the addresses of varied organization types. 
 
 Stage 1: Read in query names from a CSV. Take those queries and output the Business Name, Street Address, Latitude, and Longitude into another CSV.
+  - Update 1: Searching every state for every business name. Taking only the operational businesses. 
