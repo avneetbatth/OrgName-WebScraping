@@ -5,7 +5,7 @@ import time
 
 start_time = time.time()
 
-API_KEY = open('API_KEY.txt').read()
+#API_KEY = open('API_KEY.txt').read()
 
 # Create a google maps client instance
 map_client = googlemaps.Client(API_KEY)
@@ -15,9 +15,11 @@ business_names = []
 state_data = []
 
 # Get user input for the filenames to read in
+business_file = input('Enter the name of the file with the business names. Make sure it\'s in the same directory:')
+state_file = input('Enter the name of the file with the state data. Make sure it\'s in the same directory:')
 
 # Input of business names
-with open('input_data.csv', encoding = 'utf8') as file_in:
+with open(business_file, encoding = 'utf8') as file_in:
     csv_reader = csv.reader(file_in)
     # Use this to skip the header
     next(csv_reader)
@@ -25,7 +27,7 @@ with open('input_data.csv', encoding = 'utf8') as file_in:
         business_names.append(line)
 
 # Input of state search data: Abbreviation, Latitude, Longitude, Full Name 
-with open('state_data.csv', encoding = 'utf8') as file_in:
+with open(state_file, encoding = 'utf8') as file_in:
     csv_reader = csv.reader(file_in)
     # Use this to skip the header
     next(csv_reader)
@@ -36,11 +38,10 @@ with open('state_data.csv', encoding = 'utf8') as file_in:
 def get_place_info(business_names, state_data):
     total_info = []
     # business_names is a list, and I want to see each business in that list
-    # pprint(map_client.places("Costco", location="19.898682, -155.665857"))
     for business in business_names:
         for state in state_data: 
-            #latitude = state[1]
-            #longitude = state[2]
+            #latitude == state[1] and longitude == state[2]
+            # location format: location="19.898682, -155.665857"
             location = state[1] + ', ' + state[2]
             for i in map_client.places(business[0], location)['results']:
                 # Ensure that location is operational
@@ -59,11 +60,15 @@ def get_place_info(business_names, state_data):
 
 list_of_locations = get_place_info(business_names, state_data)
 
+# User input for output filename
+output_file = input('Please enter the name of the output file as a csv:')
+
 # Write list of locations to a new .csv file
-with open('VSS_output.csv', mode = 'w', newline = '') as location_file:
+with open(output_file, mode = 'w', newline = '') as location_file:
     writer = csv.writer(location_file)
     header = ['Query', 'Business Name', 'Street Address', 'Latitude', 'Longitude']
     writer.writerow(header)
     writer.writerows(list_of_locations)
 
+# How long it took for the script to run
 print("Process finished --- %s seconds ---" % (time.time() - start_time))
