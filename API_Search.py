@@ -60,6 +60,10 @@ def get_place_info(business_names, state_data):
 
 list_of_locations = get_place_info(business_names, state_data)
 
+# Remove duplicates from the list_of_locations
+list_of_locations_final = []
+[list_of_Locations_final.append(place) for place in list_of_locations if place not in list_of_locations_final]
+
 # User input for output filename
 output_file = input('Please enter the name of the output file as a csv:')
 
@@ -68,7 +72,7 @@ with open(output_file, mode = 'w', newline = '') as location_file:
     writer = csv.writer(location_file)
     header = ['Query', 'Business Name', 'Street Address', 'Latitude', 'Longitude']
     writer.writerow(header)
-    writer.writerows(list_of_locations)
+    writer.writerows(list_of_locations_final)
 
 # How long it took for the script to run
 print("Process finished --- %s seconds ---" % (time.time() - start_time))
