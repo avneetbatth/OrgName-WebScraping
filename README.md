@@ -10,5 +10,4 @@ I plan on using Python as the main language for this project. The end goal for t
 Stage 1: Read in query names from a CSV. Take those queries and output the Business Name, Street Address, Latitude, and Longitude into another CSV.
   - Update 1: Searching every state for every business name. Taking only the operational businesses. Bug: Hardee's returns 874 locations; it actually has 1,700 US locations. Search radius isn't large enough? And/or the Search API can't return enough results for each state (only 60 max). 
   - Working on reducing script runtime. Make use of multithreading?
-  - Need to eliminate copies (ex: Hardee's for NY)
-  - Search within 40 mile radius of all VA facilities?
+  - Search within 40 mile radius of all VA facilities: Should be possible given properly formatted location data for VA facilities
