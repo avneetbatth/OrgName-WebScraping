@@ -5,7 +5,7 @@ import time
 
 start_time = time.time()
 
-#API_KEY = open('API_KEY.txt').read()
+API_KEY = open('API_KEY.txt').read()
 
 # Create a google maps client instance
 map_client = googlemaps.Client(API_KEY)
