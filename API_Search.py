@@ -48,7 +48,7 @@ def get_place_info(business_names, state_data):
                 try:
                     if (i['business_status'] == 'OPERATIONAL'):
                             address_info = []
-                            address_info.append(business)
+                            address_info.append(business[0])
                             address_info.append(i['name'])
                             address_info.append(i['formatted_address'])
                             address_info.append(i['geometry']['location']['lat'])
